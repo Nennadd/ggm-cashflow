@@ -3,7 +3,7 @@
     <Header />
     <div id="main">
       <div id="nav">
-        <router-link to="/">Home</router-link>
+        <router-link to="/">Dashboard</router-link>
         <router-link to="/supplier-orders">Supplier Orders</router-link>
       </div>
       <router-view />
@@ -19,7 +19,13 @@ export default {
 };
 </script>
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
 body {
+  font-size: calc(12px + (19 - 13) * ((100vw - 320px) / (1600 - 320)));
   padding: 0;
   margin: 0;
 }
@@ -27,17 +33,18 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  // color: #2c3e50;
 }
 #main {
   display: grid;
-  grid-template-columns: 15rem 1fr;
+  grid-template-columns: 13rem 1fr;
 }
 #nav {
   display: flex;
   flex-direction: column;
   padding: 2rem 1rem;
-  background: #444;
+  background: #3a3a3a;
+  min-height: 90vh;
 
   a {
     display: block;
@@ -47,7 +54,8 @@ body {
     text-decoration: none;
 
     &.router-link-exact-active {
-      color: #42b983;
+      // color: #42b983;
+      color: aqua;
     }
   }
 }

@@ -1,14 +1,17 @@
 <template>
   <div class="home">
-
+    <h1>This is a Dashboard page</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: "Home",
-  components: {
-
-  }
+  components: {}
 };
 </script>
+<style lang="scss" scoped>
+h1 {
+  text-align: center;
+}
+</style>
