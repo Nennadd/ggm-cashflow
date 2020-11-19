@@ -114,7 +114,7 @@ export default {
     p {
       margin: 0;
       padding: 0.6rem 1rem;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 900;
       letter-spacing: 1px;
       background-color: rgb(23, 214, 214);
