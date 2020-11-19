@@ -6,7 +6,9 @@
         <router-link to="/">Dashboard</router-link>
         <router-link to="/supplier-orders">Supplier Orders</router-link>
       </div>
-      <router-view />
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>
@@ -58,5 +60,13 @@ body {
       color: aqua;
     }
   }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s, transform 0.4s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
