@@ -27,6 +27,7 @@ export default {
   font-family: "Roboto", sans-serif;
 }
 body {
+  background-color: #eaebf3;
   font-size: calc(12px + (19 - 13) * ((100vw - 320px) / (1600 - 320)));
   padding: 0;
   margin: 0;
@@ -56,7 +57,6 @@ body {
     text-decoration: none;
 
     &.router-link-exact-active {
-      // color: #42b983;
       color: aqua;
     }
   }
