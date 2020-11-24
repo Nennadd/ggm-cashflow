@@ -2,18 +2,15 @@
   <div class="chart" ref="chartdiv"></div>
 </template>
 <script>
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-// import material from "@amcharts/amcharts4/themes/material";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-
-// am4core.useTheme(material);
-am4core.useTheme(am4themes_animated);
 export default {
   name: "PieChart",
+  props: {
+    AmChart: {
+      type: Object
+    }
+  },
   data() {
     return {
-      loading: false,
       chart: {},
       countries: [
         {
@@ -32,65 +29,71 @@ export default {
           country: "Germany",
           litres: 165.8
         }
-        // {
-        //   country: "Australia",
-        //   litres: 139.9
-        // },
-        // {
-        //   country: "Austria",
-        //   litres: 128.3
-        // }
       ]
     };
   },
   mounted() {
-    let chart = am4core.create(this.$refs.chartdiv, am4charts.PieChart);
-    this.chart = chart;
-    // Add and configure Series
-    var pieSeries = chart.series.push(new am4charts.PieSeries());
-    pieSeries.dataFields.value = "litres";
-    pieSeries.dataFields.category = "country";
+    (async () => {
+      this.AmChart.am4core.options.queue = true;
+      this.chart = await this.AmChart.am4core.create(
+        this.$refs.chartdiv,
+        this.AmChart.am4charts.PieChart
+      );
 
-    // Let's cut a hole in our Pie chart the size of 30% the radius
-    chart.innerRadius = am4core.percent(30);
+      this.chart.exporting.menu = await new this.AmChart.am4core.ExportMenu();
+      this.chart.responsive.enabled = true;
+      this.chart.preloader.disabled = true;
+      // Add and configure Series
+      let pieSeries = await this.chart.series.push(
+        new this.AmChart.am4charts.PieSeries()
+      );
+      pieSeries.dataFields.value = "litres";
+      pieSeries.dataFields.category = "country";
 
-    // Put a thick white border around each Slice
-    pieSeries.slices.template.stroke = am4core.color("#fff");
-    pieSeries.slices.template.strokeWidth = 2;
-    pieSeries.slices.template.strokeOpacity = 1;
-    // change the cursor on hover to make it apparent the object can be interacted with
-    pieSeries.slices.template.cursorOverStyle = [
-      {
-        property: "cursor",
-        value: "pointer"
-      }
-    ];
+      // Let's cut a hole in our Pie chart the size of 30% the radius
+      this.chart.innerRadius = this.AmChart.am4core.percent(30);
 
-    pieSeries.alignLabels = false;
-    pieSeries.labels.template.bent = true;
-    pieSeries.labels.template.radius = 3;
-    pieSeries.labels.template.padding(0, 0, 0, 0);
+      // Put a thick white border around each Slice
+      pieSeries.slices.template.stroke = this.AmChart.am4core.color("#fff");
+      pieSeries.slices.template.strokeWidth = 2;
+      pieSeries.slices.template.strokeOpacity = 1;
+      // change the cursor on hover to make it apparent the object can be interacted with
+      pieSeries.slices.template.cursorOverStyle = [
+        {
+          property: "cursor",
+          value: "pointer"
+        }
+      ];
 
-    pieSeries.ticks.template.disabled = true;
+      pieSeries.alignLabels = true;
+      pieSeries.labels.template.bent = true;
+      pieSeries.labels.template.radius = 3;
+      pieSeries.labels.template.padding(0, 0, 0, 0);
 
-    // Create a base filter effect (as if it's not there) for the hover to return to
-    var shadow = pieSeries.slices.template.filters.push(
-      new am4core.DropShadowFilter()
-    );
-    shadow.opacity = 0;
+      pieSeries.ticks.template.disabled = true;
 
-    // Create hover state
-    var hoverState = pieSeries.slices.template.states.getKey("hover"); // normally we have to create the hover state, in this case it already exists
+      // Create a base filter effect (as if it's not there) for the hover to return to
+      let shadow = pieSeries.slices.template.filters.push(
+        new this.AmChart.am4core.DropShadowFilter()
+      );
+      shadow.opacity = 0;
 
-    // Slightly shift the shadow and make it more prominent on hover
-    var hoverShadow = hoverState.filters.push(new am4core.DropShadowFilter());
-    hoverShadow.opacity = 0.7;
-    hoverShadow.blur = 5;
+      // Create hover state
+      let hoverState = pieSeries.slices.template.states.getKey("hover"); // normally we have to create the hover state, in this case it already exists
 
-    // Add a legend
-    chart.legend = new am4charts.Legend();
-    chart.data = this.countries;
+      // Slightly shift the shadow and make it more prominent on hover
+      let hoverShadow = await hoverState.filters.push(
+        new this.AmChart.am4core.DropShadowFilter()
+      );
+      hoverShadow.opacity = 0.7;
+      hoverShadow.blur = 5;
+
+      // Add a legend
+      this.chart.legend = await new this.AmChart.am4charts.Legend();
+      this.chart.data = await this.countries;
+    })();
   },
+
   beforeDestroy() {
     if (this.chart) {
       this.chart.dispose();
@@ -100,7 +103,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .chart {
-  padding: 0.5rem;
+  padding: 0;
   box-shadow: 4px 4px 8px #aaa, -4px -4px 8px #fff;
+
+  &:hover {
+    box-shadow: 7px 7px 12px #aaa, -7px -7px 12px #fff;
+  }
 }
 </style>
