@@ -12,25 +12,19 @@ export default {
     ...mapGetters({ loading: "getLoading" })
   },
   methods: {
-    ...mapActions(["removeLoading"])
+    ...mapActions(["showLoading"])
   },
-  //   data() {
-  //     return {
-  //       isLoaded: false
-  //     };
-  //   },
-  //   inject: ["loading"],
   mounted() {
     document.onreadystatechange = () => {
       if (document.readyState === "complete") {
-        this.removeLoading();
+        this.showLoading();
       }
     };
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .loading {
   display: flex;
   justify-content: center;

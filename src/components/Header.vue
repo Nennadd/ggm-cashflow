@@ -39,7 +39,7 @@ export default {
   justify-content: space-between;
   background-color: #3a3a3a;
   color: #eee;
-  padding: 0.7rem 2rem;
+  padding: 0.8rem 2rem;
 
   .header-left {
     display: flex;
@@ -56,12 +56,12 @@ export default {
   }
   h2 {
     color: #bbb;
-    font-size: 1.9rem;
+    font-size: 2.2rem;
     font-weight: 900;
   }
   p {
     position: relative;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .brand::after {
     content: "international";
