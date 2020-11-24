@@ -94,8 +94,8 @@ export default {
       padding: 0.6rem 0.6rem 0.6rem 2.8rem;
       border-radius: 15px;
       border: none;
-      color: #fff;
-      background-color: #999;
+      color: #666;
+      background-color: #ccc;
     }
 
     img {
@@ -105,8 +105,7 @@ export default {
       width: 45px;
       height: 45px;
       padding: 0.3rem;
-      color: #fff;
-      background-color: aqua;
+      background-color: rgb(0, 228, 228);
       border-radius: 50%;
       z-index: 3;
     }
@@ -117,7 +116,7 @@ export default {
       font-size: 1.1rem;
       font-weight: 900;
       letter-spacing: 1px;
-      background-color: rgb(23, 214, 214);
+      background-color: rgb(2, 209, 209);
       border-radius: 15px;
       color: #fff;
     }
