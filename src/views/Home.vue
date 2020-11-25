@@ -15,6 +15,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 // am4core.useTheme(am4themes_animated);
 // import PieChart from "@/components/charts/PieChart.vue";
 // import ClusteredColumn from "@/components/charts/ClusteredColumn.vue";
+import { mapActions } from "vuex";
 export default {
   name: "Home",
   components: {
@@ -38,6 +39,14 @@ export default {
   created() {
     this.AmCharts.am4core = am4core;
     this.AmCharts.am4charts = am4charts;
+  },
+  methods: {
+    ...mapActions(["removeLoading"])
+  },
+  mounted() {
+    setTimeout(() => {
+      this.removeLoading();
+    }, 2000);
   }
 };
 </script>

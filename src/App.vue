@@ -2,8 +2,10 @@
   <div id="app">
     <Header id="header" />
     <nav>
-      <router-link to="/">Dashboard</router-link>
-      <router-link to="/supplier-orders">Supplier Orders</router-link>
+      <router-link to="/" exact>Dashboard</router-link>
+      <router-link :to="{ name: 'SupplierOrders' }"
+        >Supplier Orders</router-link
+      >
       <router-link to="/supplier-sellout">Supplier Sellout</router-link>
     </nav>
     <main>
@@ -70,7 +72,7 @@ nav {
     color: #eee;
     text-decoration: none;
 
-    &.router-link-exact-active {
+    &.router-link-active {
       color: aqua;
     }
   }

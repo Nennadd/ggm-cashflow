@@ -5,8 +5,15 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
-  name: "SupplierSellout"
+  name: "SupplierSellout",
+  methods: {
+    ...mapActions(["removeLoading"])
+  },
+  mounted() {
+    this.removeLoading();
+  }
 };
 </script>
 
