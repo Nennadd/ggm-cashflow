@@ -12,15 +12,15 @@ export default {
     ...mapGetters({ loading: "getLoading" })
   },
   methods: {
-    ...mapActions(["showLoading"])
-  },
-  mounted() {
-    document.onreadystatechange = () => {
-      if (document.readyState === "complete") {
-        this.showLoading();
-      }
-    };
+    ...mapActions(["removeLoading"])
   }
+  // mounted() {
+  //   document.onreadystatechange = () => {
+  //     if (document.readyState === "complete") {
+  //       this.removeLoading();
+  //     }
+  //   };
+  // }
 };
 </script>
 
