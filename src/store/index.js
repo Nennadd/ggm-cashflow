@@ -3,18 +3,18 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     loading: true,
   },
   mutations: {
-    showLoading(state, payload) {
+    removeLoading(state, payload) {
       state.loading = payload;
     },
   },
   actions: {
-    showLoading(state) {
-      state.commit("showLoading", false);
+    removeLoading(state) {
+      state.commit("removeLoading", false);
     },
   },
   modules: {},
@@ -22,3 +22,5 @@ export default new Vuex.Store({
     getLoading: (state) => state.loading,
   },
 });
+
+export default store;
