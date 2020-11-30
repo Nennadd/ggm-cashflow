@@ -104,10 +104,11 @@ export default {
 <style lang="scss" scoped>
 .chart {
   padding: 0;
-  box-shadow: 4px 4px 8px #aaa, -4px -4px 8px #fff;
+  background-color: #ccc;
+  box-shadow: 4px 4px 8px #666, -3px -3px 7px #eee;
 
   &:hover {
-    box-shadow: 7px 7px 12px #aaa, -7px -7px 12px #fff;
+    box-shadow: 7px 7px 10px #666, -4px -4px 9px #eee;
   }
 }
 </style>

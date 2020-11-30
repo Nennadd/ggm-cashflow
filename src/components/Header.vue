@@ -7,15 +7,17 @@
     <div class="header-right">
       <div class="form">
         <div class="form-field">
-          <img src="@/assets/setting-icon.png" alt="date icon" />
+          <i class="date__icon far fa-calendar-alt"></i>
           <input type="date" v-model="dateFrom" />
         </div>
         <div class="form-field">
-          <img src="@/assets/setting-icon.png" alt="date icon" />
+          <i class="date__icon far fa-calendar-alt"></i>
           <input type="date" v-model="dateTo" />
         </div>
       </div>
-      <div class="user"><p>Nenad</p></div>
+      <div class="user">
+        <button>Nenad</button>
+      </div>
     </div>
   </div>
 </template>
@@ -33,20 +35,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$header-background: #3a3a3a;
+$blue: rgb(35, 84, 248);
+$red: crimson;
 #header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #3a3a3a;
+  background-color: $header-background;
+  border: 1px solid $red;
   color: #eee;
-  padding: 0.8rem 2rem;
+  padding: 0.6rem 2rem 0.6rem 1rem;
 
   .header-left {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem;
   }
-
+  .brand {
+    position: relative;
+    top: -3px;
+  }
   h2,
   .brand {
     letter-spacing: 1.5px;
@@ -61,7 +70,7 @@ export default {
   }
   p {
     position: relative;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   .brand::after {
     content: "international";
@@ -74,7 +83,7 @@ export default {
     right: 2px;
   }
   span {
-    color: crimson;
+    color: $red;
   }
 
   .header-right {
@@ -84,6 +93,7 @@ export default {
 
     .form {
       display: flex;
+      gap: 2rem;
     }
 
     .form-field {
@@ -97,26 +107,34 @@ export default {
       color: #666;
       background-color: #ccc;
     }
-
-    img {
+    input:focus {
+      outline: none;
+      outline-style: none;
+    }
+    .date__icon {
       position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       top: -6px;
       left: -1rem;
       width: 45px;
       height: 45px;
       padding: 0.3rem;
-      background-color: rgb(0, 228, 228);
+      font-size: 1.4rem;
+      background-color: $blue;
       border-radius: 50%;
       z-index: 3;
     }
 
-    p {
+    .user button {
       margin: 0;
       padding: 0.6rem 1rem;
       font-size: 1.1rem;
       font-weight: 900;
       letter-spacing: 1px;
-      background-color: rgb(2, 209, 209);
+      background-color: $blue;
+      border: none;
       border-radius: 15px;
       color: #fff;
     }

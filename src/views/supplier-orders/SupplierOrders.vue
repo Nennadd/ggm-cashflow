@@ -1,7 +1,7 @@
 <template>
   <div class="supplier-orders">
     <div class="filters">
-      <button @click="setActive($event)" class="filter">alles</button>
+      <button @click="setActive($event)" class="filter active">alles</button>
       <button @click="setActive($event)" class="filter">button</button>
       <button @click="setActive($event)" class="filter">button</button>
       <button @click="setActive($event)" class="filter">button</button>
@@ -37,7 +37,9 @@
           <td>{{ item.a }}</td>
           <td>{{ item.b }}</td>
           <td>{{ item.c }}&euro;</td>
-          <td class="btn">{{ item.d }}</td>
+          <td class="btn">
+            <i class="search-btn fas fa-search"></i>
+          </td>
           <td>{{ item.e }}</td>
           <td>{{ item.f }}&euro;</td>
           <td>{{ item.g }}</td>
@@ -180,6 +182,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$blue: rgb(35, 84, 248);
+$green: rgb(3, 170, 3);
+$orange: rgb(192, 114, 12);
+$red: crimson;
 .filters {
   display: flex;
   margin: 1rem 0 0 2.5rem;
@@ -202,13 +208,13 @@ export default {
     color: #555;
   }
   .filter:nth-child(2) {
-    color: green;
+    color: $green;
   }
   .filter:nth-child(3) {
-    color: rgb(194, 97, 5);
+    color: $orange;
   }
   .filter:nth-child(4) {
-    color: crimson;
+    color: $red;
   }
   .active::after {
     content: "";
@@ -270,9 +276,9 @@ table {
     border-right: 3px solid #aaa;
   }
 
-  tr:hover td {
+  tbody tr:hover td {
     color: #000;
-    background-color: rgba(8, 3, 3, 0.2);
+    background-color: rgba(255, 255, 255, 0.75);
   }
   tbody tr td {
     font-size: 0.8rem;
@@ -286,8 +292,9 @@ table {
     padding: 0.5rem 0.3rem;
   }
   .proforma-btn,
-  .comercial-btn {
-    background-color: rgb(18, 71, 245);
+  .comercial-btn,
+  .search-btn {
+    background-color: $blue;
     color: #fff;
     width: 2rem;
     height: 2rem;
@@ -297,6 +304,14 @@ table {
     padding: 0.2rem;
     border: none;
     cursor: pointer;
+  }
+  .search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin: 0 auto;
+    background-color: $orange;
   }
 }
 </style>

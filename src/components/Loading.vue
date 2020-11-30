@@ -34,7 +34,8 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #eaebf3;
+  color: #fff;
+  background-color: #aaa;
   z-index: 99;
 }
 </style>
