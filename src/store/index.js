@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
+    socket: new WebSocket("ws://localhost:3000"),
     loading: true,
   },
   mutations: {
@@ -20,6 +21,7 @@ const store = new Vuex.Store({
   modules: {},
   getters: {
     getLoading: (state) => state.loading,
+    getSocket: (state) => state.socket,
   },
 });
 
